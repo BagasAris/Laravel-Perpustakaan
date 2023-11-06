@@ -8,7 +8,7 @@ use App\Http\Controllers\AuthContoller;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\RakController;
 use App\Http\Controllers\PeminjamanController;
-use App\Models\Rak;
+use App\Http\Controllers\PengembalianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +28,7 @@ Route::resource('/rak', RakController::class)->middleware('auth');
 Route::resource('/anggota', AnggotaController::class)->middleware('auth');
 Route::resource('/petugas', PetugasController::class)->middleware('auth');
 Route::resource('/peminjaman', PeminjamanController::class)->middleware('auth');
+Route::resource('/pengembalian', PengembalianController::class)->middleware('auth');
 
 Route::controller(AuthContoller::class)->group(function() {
     Route::get('/registration', 'register')->name('auth.register');

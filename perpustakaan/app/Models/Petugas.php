@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Peminjaman;
+use App\Models\Pengembalian;
+
 
 class Petugas extends Model
 {
@@ -22,5 +24,10 @@ class Petugas extends Model
     public function pinjam()
     {
         return $this->hasOne(App\Models\Peminjaman::class);
+    }
+
+    public function kembali()
+    {
+        return $this->hasOne(App\Models\Pengembalian::class);
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 use App\Models\Rak;
 use App\Models\Peminjaman;
+use App\Models\Pengembalian;
 
 class Buku extends Model
 {
@@ -31,5 +32,10 @@ class Buku extends Model
     public function pinjam()
     {
         return $this->hasMany(App\Models\Peminjaman::class);
+    }
+
+    public function kembali()
+    {
+        return $this->hasMany(App\Models\Pengembalian::class);
     }
 }

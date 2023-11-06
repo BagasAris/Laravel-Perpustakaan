@@ -74,6 +74,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{ asset('pengembalian')}}" class="nav-link">
+                  <i class="fas fa-arrow-circle-left"></i>
+                  <p>Pengembalian</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <form action="{{ route('auth.logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-light btn-md nav-link">
