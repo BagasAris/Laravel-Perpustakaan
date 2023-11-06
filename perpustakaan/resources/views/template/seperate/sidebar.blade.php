@@ -13,7 +13,7 @@
           <img src="{{ asset('AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Bagas Aris Prasetyo</a>
+          <a href="{{ route('user.profile', Auth::user()->id) }}" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -65,6 +65,12 @@
                 <a href="{{ asset('rak')}}" class="nav-link">
                   <i class="fas fa-archive"></i>
                   <p>Rak</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('peminjaman')}}" class="nav-link">
+                  <i class="fas fa-calendar"></i>
+                  <p>Peminjaman</p>
                 </a>
               </li>
               <li class="nav-item">

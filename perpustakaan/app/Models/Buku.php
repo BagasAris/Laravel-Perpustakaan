@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 use App\Models\Rak;
+use App\Models\Peminjaman;
 
 class Buku extends Model
 {
@@ -21,9 +23,13 @@ class Buku extends Model
         'stok',
     ];
 
-    
     public function rak()
     {
-        return $this->hasMany(Rak::class);
+        return $this->hasMany(App\Models\Rak::class);
+    }
+
+    public function pinjam()
+    {
+        return $this->hasMany(App\Models\Peminjaman::class);
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\MasterController;
 use App\Http\Controllers\AuthContoller;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\RakController;
+use App\Http\Controllers\PeminjamanController;
 use App\Models\Rak;
 
 /*
@@ -26,6 +27,7 @@ Route::resource('/buku', BukuController::class)->middleware('auth');
 Route::resource('/rak', RakController::class)->middleware('auth');
 Route::resource('/anggota', AnggotaController::class)->middleware('auth');
 Route::resource('/petugas', PetugasController::class)->middleware('auth');
+Route::resource('/peminjaman', PeminjamanController::class)->middleware('auth');
 
 Route::controller(AuthContoller::class)->group(function() {
     Route::get('/registration', 'register')->name('auth.register');
@@ -36,3 +38,4 @@ Route::controller(AuthContoller::class)->group(function() {
     Route::post('/logout', 'logout')->name('auth.logout');
 });
 
+Route::get('/profile/{user}', [ProfilesController::class, 'show'])->name('user.profile')->middleware('auth');

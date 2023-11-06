@@ -4,34 +4,34 @@
     <div class="content-wrapper">
         <div class="card card-success">
             <div class="card-header">
-                <h3 class="card-title">Form Input Data Rak</h3>
+                <h3 class="card-title">Form Input Data Peminjaman</h3>
             </div>
 
-            <form action="{{ route('rak.store') }}" enctype="multipart/form-data" method="POST">
+            <form action="{{ route('peminjaman.store') }}" method="POST">
                 @csrf
                 <div class="card-body">
                     <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Rak</h3>
+                            <h3 class="card-title">Peminjaman</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputNamaRak1">Nama Rak</label>
-                                    <input type="text" class="form-control @error('nama') is-invalid @enderror"
-                                        name="nama" placeholder="Enter Nama Rak">
+                                    <label for="exampleInputTanggalPinjam">Tanggal Pinjam</label>
+                                    <input type="date" class="form-control @error('pinjam') is-invalid @enderror"
+                                        name="pinjam">
                                 </div>
-                                @error('nama')
+                                @error('pinjam')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                                 <div class="form-group">
-                                    <label for="exampleInputLokasi1">Lokasi</label>
-                                    <input type="text" class="form-control @error('lokasi') is-invalid @enderror"
-                                        name="lokasi" placeholder="Enter Lokasi">
+                                    <label for="exampleInputTanggalKembali">Tanggal Kembali</label>
+                                    <input type="date" class="form-control @error('kembali') is-invalid @enderror"
+                                        name="kembali">
                                 </div>
-                                @error('lokasi')
+                                @error('kembali')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                                 <div class="form-group">
@@ -48,6 +48,38 @@
                                     </select>
                                 </div>
                                 @error('buku')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                                <div class="form-group">
+                                    <label for="anggota">Anggota</label>
+                                    <select name="anggota" id="anggota"
+                                        class="form-control @error('anggota') is-invalid @enderror">
+                                        <option disabled selected>--Pilih Salah Satu--</option>
+                                        @forelse ($anggotas as $key => $value)
+                                            <option value="{{ $value->id }}">{{ $value->nama_anggota }}</option>
+                                        @empty
+                                            <option disabled>--Data Masih Kosong--</option>
+                                        @endforelse
+
+                                    </select>
+                                </div>
+                                @error('anggota')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                                <div class="form-group">
+                                    <label for="petugas">Petugas</label>
+                                    <select name="petugas" id="petugas"
+                                        class="form-control @error('petugas') is-invalid @enderror">
+                                        <option disabled selected>--Pilih Salah Satu--</option>
+                                        @forelse ($petugass as $key => $value)
+                                            <option value="{{ $value->id }}">{{ $value->nama_petugas }}</option>
+                                        @empty
+                                            <option disabled>--Data Masih Kosong--</option>
+                                        @endforelse
+
+                                    </select>
+                                </div>
+                                @error('petugas')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
 
@@ -68,11 +100,11 @@
                                 <h5 class="modal-title">Peringatan</h5>
                             </div>
                             <div class="modal-body">
-                                <p>Apakah Anda Yakin Akan Keluar Dari Form Create Data Rak</p>
+                                <p>Apakah Anda Yakin Akan Keluar Dari Form Create Data Peminjaman</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                <a href="{{ route('rak.index') }}" class="btn btn-primary">Yes</a>
+                                <a href="{{ route('peminjaman.index') }}" class="btn btn-primary">Yes</a>
                             </div>
                         </div>
                     </div>

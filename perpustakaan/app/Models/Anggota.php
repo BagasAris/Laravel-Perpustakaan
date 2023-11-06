@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Peminjaman;
 
 class Anggota extends Model
 {
@@ -19,4 +20,9 @@ class Anggota extends Model
         'no_telp_anggota',
         'alamat_anggota',
     ];
+
+    public function pinjam()
+    {
+        return $this->hasOne(App\Models\Peminjaman::class);
+    }
 }

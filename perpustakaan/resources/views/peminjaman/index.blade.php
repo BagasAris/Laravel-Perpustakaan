@@ -14,12 +14,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Data Rak</h1>
+                        <h1>Data Peminjaman</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data Rak</li>
+                            <li class="breadcrumb-item active">Data Peminjaman</li>
                         </ol>
                     </div>
                 </div>
@@ -33,34 +33,38 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Data Rak</h3>
+                                <h3 class="card-title">Data Peminjaman</h3>
                             </div>
-                            <a href="{{ route('rak.create') }}" class="btn btn-small btn-success">Create</a>
+                            <a href="{{ route('peminjaman.create') }}" class="btn btn-small btn-success">Create</a>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Rak</th>
-                                            <th>Lokasi Rak</th>
+                                            <th>Tanggal Pinjam</th>
+                                            <th>Tanggal Kembali</th>
                                             <th>Buku</th>
+                                            <th>Anggota</th>
+                                            <th>Petugas</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($raks as $key => $value)
+                                        @foreach ($peminjamans as $key => $value)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $value->nama_rak }}</td>
-                                                <td>{{ $value->lokasi_rak }}</td>
+                                                <td>{{ $value->tanggal_pinjam }}</td>
+                                                <td>{{ $value->tanggal_kembali }}</td>
                                                 <td>{{ $value->buku->judul_buku }}</td>
+                                                <td>{{ $value->anggota->nama_anggota }}</td>
+                                                <td>{{ $value->petugas->nama_petugas }}</td>
                                                 <td class="d-flex" style="gap:10px">
-                                                    <a href="{{ route('rak.show', $value->id) }}"
+                                                    <a href="{{ route('peminjaman.show', $value->id) }}"
                                                         class="btn btn-small btn-info">Detail</a>
-                                                    <a href="{{ route('rak.edit', $value->id) }}"
+                                                    <a href="{{ route('peminjaman.edit', $value->id) }}"
                                                         class="btn btn-small btn-warning">Edit</a>
-                                                    <form action="{{ route('rak.destroy', $value->id) }}"
+                                                    <form action="{{ route('peminjaman.destroy', $value->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')

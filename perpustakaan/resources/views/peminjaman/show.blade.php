@@ -2,41 +2,51 @@
 
 @section('content')
     <div class="content-wrapper">
-        <div class="card card-info">
+        <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Form Detail Data Rak</h3>
+                <h3 class="card-title">Form Input Data Peminjaman</h3>
             </div>
 
-            <form action="{{ route('rak.store') }}" method="POST">
+            <form action="{{ route('peminjaman.store') }}" method="POST">
                 @csrf
                 <div class="card-body">
-                    <div class="card card-info">
+                    <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Rak</h3>
+                            <h3 class="card-title">Peminjaman</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="NamaRak1">Nama Rak</label>
-                                    <input type="text" class="form-control"
-                                       value="{{ $rak->nama_rak }}" name="nama" disabled>
+                                    <label for="TanggalPinjam">Tanggal Pinjam</label>
+                                    <input type="date" class="form-control"
+                                        name="pinjam" value="{{ $peminjaman->tanggal_pinjam }}" disabled>
                                 </div>
                                 <div class="form-group">
-                                    <label for="Lokasi1">Lokasi</label>
-                                    <input type="text" class="form-control"
-                                     value="{{ $rak->lokasi_rak }}" name="lokasi" disabled>
+                                    <label for="TanggalKembali">Tanggal Kembali</label>
+                                    <input type="date" class="form-control"
+                                        name="kembali" value="{{ $peminjaman->tanggal_kembali }}" disabled>
                                 </div>
                                 <div class="form-group">
-                                    <label for="JudulBuku">Alamat</label>
-                                    <input type="text" class="form-control" name="buku"
-                                        value="{{ $rak->buku->judul_buku }}" disabled>
+                                    <label for="Buku">Buku</label>
+                                    <input type="text" class="form-control"
+                                        name="buku" value="{{ $bukus->judul_buku }}" disabled>
                                 </div>
-                                <!-- /.card-body -->
+                                <div class="form-group">
+                                    <label for="Angoota">Angoota</label>
+                                    <input type="text" class="form-control"
+                                        name="angoota" value="{{ $anggotas->nama_anggota }}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Petugas">Petugasi</label>
+                                    <input type="text" class="form-control"
+                                        name="petugas" value="{{ $petugass->nama_petugas }}" disabled>
+                                </div>
+
 
                                 <div class="card-footer">
-                                    <a href="" class="btn btn-info" data-toggle="modal"
+                                    <a href="" class="btn btn-secondary" data-toggle="modal"
                                         data-target="#exampleModal">Kembali</a>
                                 </div>
                         </form>
@@ -50,11 +60,11 @@
                                 <h5 class="modal-title">Peringatan</h5>
                             </div>
                             <div class="modal-body">
-                                <p>Apakah Anda Yakin Akan Keluar Dari Form Detail Data Rak</p>
+                                <p>Apakah Anda Yakin Akan Keluar Dari Form Show Data Peminjaman</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                <a href="{{ route('rak.index') }}" class="btn btn-primary">Yes</a>
+                                <a href="{{ route('peminjaman.index') }}" class="btn btn-primary">Yes</a>
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Peminjaman;
 
 class Petugas extends Model
 {
@@ -17,4 +18,9 @@ class Petugas extends Model
         'no_telp_petugas',
         'alamat_petugas',
     ];
+
+    public function pinjam()
+    {
+        return $this->hasOne(App\Models\Peminjaman::class);
+    }
 }
