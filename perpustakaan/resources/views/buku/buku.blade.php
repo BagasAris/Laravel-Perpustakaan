@@ -1,3 +1,6 @@
+ @extends('template.master')
+
+@section('content')
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -5,6 +8,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css') }}">
 
+<div class="content-wrapper">
   <div class="card card-success">
       <div class="card-header">
           <h3 class="card-title">Form Input Data Buku</h3>
@@ -21,13 +25,6 @@
                   <form>
                       <div class="card-body">
                           <div class="form-group">
-                              <label for="exampleInputKodeBuku1">Kode Buku</label>
-                              <input type="text" class="form-control @error('kode') is-invalid @enderror" name="kode" id="exampleInputKodeBuku1"
-                                  placeholder="Enter Kode Buku">
-                          </div>
-                          @error('kode')
-                              <div class="alert alert-danger">{{ $message }}</div>
-                          @enderror
                           <div class="form-group">
                               <label for="exampleInputJudulBuku1">Judul Buku</label>
                               <input type="text" class="form-control  @error('judul') is-invalid @enderror" name="judul" id="exampleInputJudulBuku1"
@@ -93,6 +90,7 @@
                               <a href="{{ route('buku.index') }}" class="btn btn-success">Yes</a>
                           </div>
                       </div>
+                      </div>
                   </div>
               </div>
 
@@ -102,3 +100,4 @@
               <script src="{{ asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
               <!-- AdminLTE App -->
               <script src="{{ asset('AdminLTE/dist/js/adminlte.min.js') }}"></script>
+@endsection

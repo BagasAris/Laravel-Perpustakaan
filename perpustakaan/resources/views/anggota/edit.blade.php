@@ -20,9 +20,8 @@
                         <!-- form start -->
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Kode Anggota</label>
                                 <input type="text" class="form-control @error('kode') is-invalid @enderror"
-                                    name="kode" value="{{ $anggota->kode_anggota }}">
+                                    name="kode" hidden value="{{ $anggota->kode_anggota }}">
                                 @error('kode')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror

@@ -21,11 +21,6 @@
               <form>
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Kode Anggota</label>
-                    <input type="text" class="form-control @error('kode') is-invalid @enderror" name="kode" placeholder="Input Kode Anggota" value="{{ old('kode') }}">
-                    @error('kode')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
                     <label for="exampleInputEmail1">Nama Anggota</label>
                     <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" placeholder="Input Nama Anggota" value="{{ old('nama') }}">
                     @error('nama')

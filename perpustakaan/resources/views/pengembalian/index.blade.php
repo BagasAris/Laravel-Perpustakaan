@@ -64,12 +64,6 @@
                                                         class="btn btn-small btn-info">Detail</a>
                                                     <a href="{{ route('pengembalian.edit', $value->id) }}"
                                                         class="btn btn-small btn-warning">Edit</a>
-                                                    <form action="{{ route('pengembalian.destroy', $value->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="sumbit" class="btn btn-small btn-danger">Hapus</button>
-                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach

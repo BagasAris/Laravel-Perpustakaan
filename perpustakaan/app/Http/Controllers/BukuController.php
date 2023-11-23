@@ -35,16 +35,12 @@ class BukuController extends Controller
     {
         //
         $request->validate([
-            'kode' => 'required||unique:bukus,kode_buku|min:3',
             'judul' => 'required|min:5',
             'penulis' => 'required|min:5',
             'penerbit' => 'required|min:5',
             'tahun' => 'required',
             'stok' => 'required',
         ],[
-            'kode.required' => 'kode wajib diisi, tidak boleh kosong ya cuy',
-            'kode.unique' => 'Kode sudah terdaftar, silahkan coba dengan kode lain',
-            'kode.min' => 'kode minimal 3 angka',
             'judul.required' => 'judul wajib diisi, tidak boleh kosong ya cuy',
             'judul.min' => 'judul minimal 5 huruf',
             'penulis.required' => 'penulis wajib diisi, tidak boleh kosong ya cuy',
@@ -55,8 +51,13 @@ class BukuController extends Controller
             'stok.required' => 'stok wajib diisi, tidak boleh kosong ya cuy',
 
         ]);
+
+        /// Logika untuk mendapatkan kode otomatis
+        $nextKode = Buku::max('kode_buku');
+        $nextKode = $nextKode ? ++$nextKode : 'B001';
+
         $query = DB::table('bukus')->insert([
-            'kode_buku' => $request['kode'],
+            'kode_buku' => $nextKode,
             'judul_buku' => $request['judul'],
             'penulis_buku' => $request['penulis'],
             'penerbit_buku' => $request['penerbit'],

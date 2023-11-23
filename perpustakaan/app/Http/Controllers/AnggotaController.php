@@ -33,15 +33,12 @@ class AnggotaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode' => 'required|unique:anggotas,kode_anggota', // Validasi agar 'kode' unik
             'nama' => 'required|unique:anggotas,nama_anggota|min:3',
             'jk' => 'required',
             'jurusan' => 'required',
             'telp' => 'required|numeric|min:10',
             'alamat' => 'required|min:10',
         ], [
-            'kode.required' => 'Kode wajib diisi, tidak boleh kosong ya cuy',
-            'kode.unique' => 'Kode sudah terdaftar, silahkan coba dengan kode lain',
             'nama.required' => 'Nama wajib diisi, tidak boleh kosong ya cuy',
             'nama.unique' => 'Nama sudah terdaftar, silahkan coba dengan nama lain',
             'nama.min' => 'Nama minimal 3 huruf',
@@ -54,13 +51,13 @@ class AnggotaController extends Controller
             'alamat.min' => 'Alamat minimal 10 huruf',
         ]);
 
-        // Pastikan Anda mengisi 'kode_anggota' dengan nilai yang unik
-        // Contoh mengambil nilai dari input 'kode' dalam permintaan
-        $kodeAnggota = $request->input('kode');
+        /// Logika untuk mendapatkan kode otomatis
+        $nextKode = Anggota::max('kode_anggota');
+        $nextKode = $nextKode ? ++$nextKode : 'A001';
 
         // Selanjutnya, Anda bisa membuat objek Anggota baru dengan 'kode_anggota' yang sesuai
         Anggota::create([
-            'kode_anggota' => $kodeAnggota,
+            'kode_anggota' => $nextKode,
             'nama_anggota' => $request->input('nama'),
             'jk_anggota' => $request->input('jk'),
             'jurusan_anggota' => $request->input('jurusan'),

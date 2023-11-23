@@ -1,10 +1,13 @@
+  @extends('template.master')
+
+@section('content')
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css') }}">
-
+<div class="content-wrapper">
   <div class="card card-warning">
       <div class="card-header">
           <h3 class="card-title">Form Edit Data Buku</h3>
@@ -22,9 +25,8 @@
                   <form>
                       <div class="card-body">
                           <div class="form-group">
-                              <label for="exampleInputKodeBuku1">Kode Buku</label>
                               <input type="text" class="form-control @error('kode') is-invalid @enderror"
-                                  name="kode"" name="kode" id="exampleInputKodeBuku1"
+                                  name="kode" hidden name="kode" id="exampleInputKodeBuku1"
                                   value="{{ $bukus->kode_buku }}">
                           </div>
                           @error('kode')
@@ -80,6 +82,7 @@
             </form>
               </div>
           </div>
+          </div>
 
           <div class="modal" tabindex="-1" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -104,3 +107,4 @@
           <script src="{{ asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
           <!-- AdminLTE App -->
           <script src="{{ asset('AdminLTE/dist/js/adminlte.min.js') }}"></script>
+@endsection

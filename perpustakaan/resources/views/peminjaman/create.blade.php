@@ -21,7 +21,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputTanggalPinjam">Tanggal Pinjam</label>
                                     <input type="date" class="form-control @error('pinjam') is-invalid @enderror"
-                                        name="pinjam">
+                                    name="pinjam" value="{{ now()->toDateString() }}" readonly>
                                 </div>
                                 @error('pinjam')
                                     <div class="alert alert-danger">{{ $message }}</div>

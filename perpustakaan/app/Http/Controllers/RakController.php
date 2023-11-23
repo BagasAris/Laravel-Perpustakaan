@@ -93,7 +93,7 @@ class RakController extends Controller
             'buku.required' => 'buku wajib diisi, tidak boleh kosong ya cuy',
         ]);
 
-        $rak->updated([
+        $rak->update([
             'nama_rak' => $request['nama'],
             'lokasi_rak' => $request['lokasi'],
             'id_buku' => $request['buku'],

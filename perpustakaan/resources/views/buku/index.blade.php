@@ -48,7 +48,7 @@
                                             <th>penerbit_buku</th>
                                             <th>tahun_penerbit</th>
                                             <th>stok</th>
-                                            <th>Action</th>
+                                            <th>action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
