@@ -14,7 +14,6 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Data Rak</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -33,7 +32,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Data Rak</h3>
+                                                               <h3 class="card-title"><h3 class="text-center" style="font-weight: bold;">Data <span style="color: green;">Rak</span></h3></h3>
                             </div>
                             <a href="{{ route('rak.create') }}" class="btn btn-small btn-success">Create</a>
                             <!-- /.card-header -->
@@ -57,15 +56,12 @@
                                                 <td>{{ $value->buku->judul_buku }}</td>
                                                 <td class="d-flex" style="gap:10px">
                                                     <a href="{{ route('rak.show', $value->id) }}"
-                                                        class="btn btn-small btn-info">Detail</a>
+                                                        class="btn btn-sm btn-info"><i class="far fa-eye"></i></a>
                                                     <a href="{{ route('rak.edit', $value->id) }}"
-                                                        class="btn btn-small btn-warning">Edit</a>
-                                                    <form action="{{ route('rak.destroy', $value->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="sumbit" class="btn btn-small btn-danger">Hapus</button>
-                                                    </form>
+                                                        class="btn btn-sm btn-warning"><i class="fas fa-edit" style="color: white;"></i></a>
+                                                    <a href="#" class="btn btn-small btn-danger" data-toggle="modal"
+                                                        data-target="#deleteModal{{ $value->id }}">
+                                                        <i class="fas fa-trash"></i>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -86,6 +82,29 @@
         </section>
         <!-- /.content -->
     </div>
+    <div class="modal fade" id="deleteModal{{ $value->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $value->id }}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel{{ $value->id }}">Konfirmasi Hapus</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin ingin menghapus data ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <form action="{{ route('rak.destroy', $value->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('script')

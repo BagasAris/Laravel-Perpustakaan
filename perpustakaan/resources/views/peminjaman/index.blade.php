@@ -14,7 +14,6 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Data Peminjaman</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -33,7 +32,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Data Peminjaman</h3>
+                                                               <h3 class="card-title"><h3 class="text-center" style="font-weight: bold;">Data <span style="color: green;">Peminjaman</span></h3></h3>
                             </div>
                             <a href="{{ route('peminjaman.create') }}" class="btn btn-small btn-success">Create</a>
                             <!-- /.card-header -->
@@ -61,9 +60,9 @@
                                                 <td>{{ $value->petugas->nama_petugas }}</td>
                                                 <td class="d-flex" style="gap:10px">
                                                     <a href="{{ route('peminjaman.show', $value->id) }}"
-                                                        class="btn btn-small btn-info">Detail</a>
+                                                        class="btn btn-sm btn-info"><i class="far fa-eye"></i></a>
                                                     <a href="{{ route('peminjaman.edit', $value->id) }}"
-                                                        class="btn btn-small btn-warning">Edit</a>
+                                                        class="btn btn-sm btn-warning"><i class="fas fa-edit" style="color: white;"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
